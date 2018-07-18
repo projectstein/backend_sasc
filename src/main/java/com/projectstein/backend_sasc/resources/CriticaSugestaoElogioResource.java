@@ -1,35 +1,33 @@
 package com.projectstein.backend_sasc.resources;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.List;
-
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.projectstein.backend_sasc.domain.CriticaSugestaoElogio;
+import com.projectstein.backend_sasc.services.CriticaSugestaoElogioService;
 
 @RestController
 @RequestMapping(value = "/cses")
 public class CriticaSugestaoElogioResource {
 	
-	@RequestMapping(method= RequestMethod.GET)
-	public List<CriticaSugestaoElogio> listar() throws ParseException {
+
+	
+	@Autowired
+	private CriticaSugestaoElogioService service;
+	
 		
-		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-		
-		CriticaSugestaoElogio cse1= new CriticaSugestaoElogio(1, "teste", sdf.parse("17/07/2018")); 
-		CriticaSugestaoElogio cse2= new CriticaSugestaoElogio(2, "teste2", sdf.parse("17/07/2018")); 
-		
-		List<CriticaSugestaoElogio> lista = new ArrayList<>(); 
-		
-		lista.add(cse1);
-		lista.add(cse2);
-		
-		
-		return lista;
+		@RequestMapping(value= "/{id}" , method= RequestMethod.GET)
+		public ResponseEntity<?> find(@PathVariable Integer id) {
+			
+				CriticaSugestaoElogio obj = service.buscar(id); 
+			return ResponseEntity.ok().body(obj);
+	
+	
+	
 	}
 
 	

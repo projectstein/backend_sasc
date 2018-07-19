@@ -3,8 +3,8 @@ package com.projectstein.backend_sasc.services;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.projectstein.backend_sasc.CriticaSugestaoElogioRepository;
 import com.projectstein.backend_sasc.domain.CriticaSugestaoElogio;
+import com.projectstein.backend_sasc.repository.CriticaSugestaoElogioRepository;
 
 @Service
 	public class CriticaSugestaoElogioService {

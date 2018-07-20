@@ -15,11 +15,11 @@ public class Funcionario extends Pessoa {
 	public Funcionario() {
 		}
 
-	public Funcionario(Integer id, String cpf, String nome, String email, TipoLogin tipoLogin, Funcao funcao) {
-		super(id, cpf, nome, email, tipoLogin);
+	public Funcionario(Integer id, String cpf, String nome, String email, TipoLogin tipoLogin, Login login,Funcao funcao) {
+		super(id, cpf, nome, email, tipoLogin, login);
 		this.funcao = funcao;
 	}
-
+	
 	public Funcao getFuncao() {
 		return funcao;
 	}

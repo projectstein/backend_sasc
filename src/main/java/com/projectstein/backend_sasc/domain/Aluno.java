@@ -23,13 +23,13 @@ public class Aluno extends Pessoa {
 		
 	}
 
-	
-	public Aluno(Integer id, String cpf, String nome, String email, TipoLogin tipoLogin) {
-		super(id, cpf, nome, email, tipoLogin);
+	public Aluno(Integer id, String cpf, String nome, String email, TipoLogin tipoLogin, Login login) {
+		super(id, cpf, nome, email, tipoLogin, login);
 		
 	}
 
-
+	
+	
 	public Set<String> getTelefones() {
 		return telefones;
 	}

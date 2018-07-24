@@ -35,14 +35,14 @@ public abstract class Pessoa implements Serializable {
 
 
 
-	public Pessoa(Integer id, String cpf, String nome, String email, TipoLogin tipoLogin, Login login) {
+	public Pessoa(Integer id, String cpf, String nome, String email, TipoLogin tipoLogin) {
 		super();
 		this.id = id;
 		this.cpf = cpf;
 		this.nome = nome;
 		this.email = email;
 		this.tipoLogin = tipoLogin;
-		this.login = login;
+		
 	}
 
 

@@ -7,6 +7,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 
 @Entity
@@ -20,15 +22,21 @@ public class CriticaSugestaoElogio implements Serializable {
 		private Date dataComentario;
 		
 		
+		@ManyToOne
+		@JoinColumn(name = "aluno_id")
+		private Aluno aluno;
+		
+		
 		public CriticaSugestaoElogio() {
 			
 		}
 
 
-		public CriticaSugestaoElogio(Integer id, String comentario, Date dataComentario) {
+		public CriticaSugestaoElogio(Integer id, String comentario, Date dataComentario, Aluno aluno) {
 			this.id = id;
 			this.comentario = comentario;
 			this.dataComentario = dataComentario;
+			this.aluno= aluno;
 		}
 
 
@@ -59,6 +67,16 @@ public class CriticaSugestaoElogio implements Serializable {
 
 		public void setDataComentario(Date dataComentario) {
 			this.dataComentario = dataComentario;
+		}
+
+
+		public Aluno getAluno() {
+			return aluno;
+		}
+
+
+		public void setAluno(Aluno aluno) {
+			this.aluno = aluno;
 		}
 
 

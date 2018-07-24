@@ -1,11 +1,16 @@
 package com.projectstein.backend_sasc.domain;
 
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import javax.persistence.CollectionTable;
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 import com.projectstein.backend_sasc.domain.enums.TipoLogin;
 
@@ -19,17 +24,30 @@ public class Aluno extends Pessoa {
 	private Set<String> telefones = new HashSet<>();
 
 
+	@ManyToOne
+	@JoinColumn(name = "funcionario_id")
+	private Funcionario funcionario;
+	
+	@ManyToOne
+	@JoinColumn(name = "administrador_id")
+	private Administrador administrador;
+	
+	@OneToMany(mappedBy = "aluno")
+	private List<CriticaSugestaoElogio> criticaSugestaoElogio = new ArrayList<>();
+
 	public Aluno() {
+    }
+
+	public Aluno(Integer id, String cpf, String nome, String email, TipoLogin tipoLogin, Administrador administrador) {
+		super(id, cpf, nome, email, tipoLogin);
+		this.administrador= administrador;
+	}
 		
+	public Aluno(Integer id, String cpf, String nome, String email, TipoLogin tipoLogin, Funcionario funcionario){
+		super(id, cpf, nome, email, tipoLogin);
+		this.funcionario= funcionario;
 	}
 
-	public Aluno(Integer id, String cpf, String nome, String email, TipoLogin tipoLogin, Login login) {
-		super(id, cpf, nome, email, tipoLogin, login);
-		
-	}
-
-	
-	
 	public Set<String> getTelefones() {
 		return telefones;
 	}
@@ -37,6 +55,30 @@ public class Aluno extends Pessoa {
 
 	public void setTelefones(Set<String> telefones) {
 		this.telefones = telefones;
+	}
+
+	public Funcionario getFuncionario() {
+		return funcionario;
+	}
+
+	public void setFuncionario(Funcionario funcionario) {
+		this.funcionario = funcionario;
+	}
+
+	public Administrador getAdministrador() {
+		return administrador;
+	}
+
+	public void setAdministrador(Administrador administrador) {
+		this.administrador = administrador;
+	}
+
+	public List<CriticaSugestaoElogio> getCriticaSugestaoElogio() {
+		return criticaSugestaoElogio;
+	}
+
+	public void setCriticaSugestaoElogio(List<CriticaSugestaoElogio> criticaSugestaoElogio) {
+		this.criticaSugestaoElogio = criticaSugestaoElogio;
 	}
 
 

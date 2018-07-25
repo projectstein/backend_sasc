@@ -25,6 +25,9 @@ public class Funcionario extends Pessoa {
 	@OneToMany(mappedBy = "funcionario")
 	private List<Aluno> alunos = new ArrayList<>();
 	
+	@OneToMany(mappedBy = "funcionario")
+	private List<Avaliacao> avaliacoes = new ArrayList<>();
+	
 	public Funcionario() {
 		}
 
@@ -48,6 +51,22 @@ public class Funcionario extends Pessoa {
 
 	public void setAdministrador(Administrador administrador) {
 		this.administrador = administrador;
+	}
+
+	public List<Aluno> getAlunos() {
+		return alunos;
+	}
+
+	public void setAlunos(List<Aluno> alunos) {
+		this.alunos = alunos;
+	}
+
+	public List<Avaliacao> getAvaliacoes() {
+		return avaliacoes;
+	}
+
+	public void setAvaliacoes(List<Avaliacao> avaliacoes) {
+		this.avaliacoes = avaliacoes;
 	}
 
 	

@@ -21,6 +21,17 @@ public class Administrador extends Pessoa {
 	@OneToMany(mappedBy = "administrador")
 	private List<Funcionario> funcionarios = new ArrayList<>();
 	
+	@OneToMany(mappedBy = "administrador")
+	private List<Pergunta> perguntas = new ArrayList<>();
+	
+	public List<Pergunta> getPerguntas() {
+		return perguntas;
+	}
+
+	public void setPerguntas(List<Pergunta> perguntas) {
+		this.perguntas = perguntas;
+	}
+
 	public Administrador() {
 	}
 

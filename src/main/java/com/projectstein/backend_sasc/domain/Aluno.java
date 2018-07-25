@@ -28,6 +28,8 @@ public class Aluno extends Pessoa {
 	@JoinColumn(name = "funcionario_id")
 	private Funcionario funcionario;
 	
+	
+
 	@ManyToOne
 	@JoinColumn(name = "administrador_id")
 	private Administrador administrador;
@@ -35,6 +37,9 @@ public class Aluno extends Pessoa {
 	@OneToMany(mappedBy = "aluno")
 	private List<CriticaSugestaoElogio> criticaSugestaoElogio = new ArrayList<>();
 
+	@OneToMany(mappedBy = "aluno")
+	private List<Avaliacao> avaliacoes = new ArrayList<>();
+	
 	public Aluno() {
     }
 
@@ -81,7 +86,13 @@ public class Aluno extends Pessoa {
 		this.criticaSugestaoElogio = criticaSugestaoElogio;
 	}
 
+	public List<Avaliacao> getAvaliacoes() {
+		return avaliacoes;
+	}
 
+	public void setAvaliacoes(List<Avaliacao> avaliacoes) {
+		this.avaliacoes = avaliacoes;
+	}
 	
 	
 	

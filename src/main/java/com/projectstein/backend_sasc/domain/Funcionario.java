@@ -8,6 +8,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.projectstein.backend_sasc.domain.enums.Funcao;
 import com.projectstein.backend_sasc.domain.enums.TipoLogin;
 
@@ -18,13 +19,16 @@ public class Funcionario extends Pessoa {
 	
 	private Funcao funcao;
 
+	@JsonIgnore
 	@ManyToOne
 	@JoinColumn(name = "administrador_id")
 	private Administrador administrador;
 	
+	@JsonIgnore
 	@OneToMany(mappedBy = "funcionario")
 	private List<Aluno> alunos = new ArrayList<>();
 	
+	@JsonIgnore
 	@OneToMany(mappedBy = "funcionario")
 	private List<Avaliacao> avaliacoes = new ArrayList<>();
 	

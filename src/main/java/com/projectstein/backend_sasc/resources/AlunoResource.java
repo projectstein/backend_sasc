@@ -7,23 +7,23 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.projectstein.backend_sasc.domain.CriticaSugestaoElogio;
-import com.projectstein.backend_sasc.services.CriticaSugestaoElogioService;
+import com.projectstein.backend_sasc.domain.Aluno;
+import com.projectstein.backend_sasc.services.AlunoService;
 
 @RestController
-@RequestMapping(value = "/cses")
-public class CriticaSugestaoElogioResource {
+@RequestMapping(value = "/alunos")
+public class AlunoResource {
 	
 
 	
 	@Autowired
-	private CriticaSugestaoElogioService service;
+	private AlunoService service;
 	
 		
 		@RequestMapping(value= "/{id}" , method= RequestMethod.GET)
-		public ResponseEntity<CriticaSugestaoElogio> find(@PathVariable Integer id) {
+		public ResponseEntity<Aluno> find(@PathVariable Integer id) {
 			
-				CriticaSugestaoElogio obj = service.buscar(id); 
+				Aluno obj = service.find(id); 
 			return ResponseEntity.ok().body(obj);
 	
 	

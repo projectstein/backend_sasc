@@ -6,41 +6,38 @@ import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.projectstein.backend_sasc.domain.enums.TipoLogin;
 
 @Entity
 public class Administrador extends Pessoa {
 	private static final long serialVersionUID = 1L;
-	
+
 	private String emailSistema;
 	private String senhaEmail;
-	
+
+	@JsonIgnore
 	@OneToMany(mappedBy = "administrador")
-	private List<Aluno>alunos = new ArrayList<>();
-	
+	private List<Aluno> alunos = new ArrayList<>();
+
+	@JsonIgnore
 	@OneToMany(mappedBy = "administrador")
 	private List<Funcionario> funcionarios = new ArrayList<>();
-	
+
+	@JsonIgnore
 	@OneToMany(mappedBy = "administrador")
 	private List<Pergunta> perguntas = new ArrayList<>();
-	
-	public List<Pergunta> getPerguntas() {
-		return perguntas;
-	}
-
-	public void setPerguntas(List<Pergunta> perguntas) {
-		this.perguntas = perguntas;
-	}
 
 	public Administrador() {
 	}
 
-	public Administrador(Integer id, String cpf, String nome, String email, TipoLogin tipoLogin ,String emailSistema, String senhaEmail) {
+	public Administrador(Integer id, String cpf, String nome, String email, TipoLogin tipoLogin, String emailSistema,
+			String senhaEmail) {
 		super(id, cpf, nome, email, tipoLogin);
-		
+
 		this.emailSistema = emailSistema;
 		this.senhaEmail = senhaEmail;
-		
+
 	}
 
 	public String getEmailSistema() {
@@ -75,8 +72,12 @@ public class Administrador extends Pessoa {
 		this.funcionarios = funcionarios;
 	}
 
-	
-	
-	
+	public List<Pergunta> getPerguntas() {
+		return perguntas;
+	}
 
+	public void setPerguntas(List<Pergunta> perguntas) {
+		this.perguntas = perguntas;
+	}
+	
 }

@@ -2,32 +2,30 @@ package com.projectstein.backend_sasc.domain;
 
 import java.io.Serializable;
 
-import javax.persistence.CascadeType;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
-import javax.persistence.OneToOne;
 
 import com.projectstein.backend_sasc.domain.enums.TipoLogin;
 
 @Entity
-@Inheritance(strategy= InheritanceType.JOINED)
+@Inheritance(strategy= InheritanceType.TABLE_PER_CLASS)
 public abstract class Pessoa implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.TABLE)
 	private Integer id;
 	private String cpf;
 	private String nome;
 	private String email;
 	private TipoLogin tipoLogin;
 	
-	@OneToOne(cascade=CascadeType.ALL, mappedBy="pessoa")
-	private Login login;
+	
 	
 	public Pessoa() {
 		super();
@@ -88,17 +86,6 @@ public abstract class Pessoa implements Serializable {
 	}
 
 	
-	public Login getLogin() {
-		return login;
-	}
-
-
-
-	public void setLogin(Login login) {
-		this.login = login;
-	}
-
-
 
 	@Override
 	public int hashCode() {

@@ -13,25 +13,16 @@ import com.projectstein.backend_sasc.services.AlunoService;
 @RestController
 @RequestMapping(value = "/alunos")
 public class AlunoResource {
-	
 
-	
 	@Autowired
 	private AlunoService service;
-	
-		
-		@RequestMapping(value= "/{id}" , method= RequestMethod.GET)
-		public ResponseEntity<Aluno> find(@PathVariable Integer id) {
-			
-				Aluno obj = service.find(id); 
-			return ResponseEntity.ok().body(obj);
-	
-	
-	
+
+	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
+	public ResponseEntity<Aluno> find(@PathVariable Integer id) {
+
+		Aluno obj = service.find(id);
+		return ResponseEntity.ok().body(obj);
+
 	}
 
-	
-	
-	
-	
 }

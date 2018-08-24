@@ -2,7 +2,6 @@ package com.projectstein.backend_sasc.domain;
 
 import java.io.Serializable;
 
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -13,10 +12,10 @@ import javax.persistence.InheritanceType;
 import com.projectstein.backend_sasc.domain.enums.TipoLogin;
 
 @Entity
-@Inheritance(strategy= InheritanceType.TABLE_PER_CLASS)
+@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 public abstract class Pessoa implements Serializable {
 	private static final long serialVersionUID = 1L;
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.TABLE)
 	private Integer id;
@@ -24,14 +23,10 @@ public abstract class Pessoa implements Serializable {
 	private String nome;
 	private String email;
 	private TipoLogin tipoLogin;
-	
-	
-	
+
 	public Pessoa() {
 		super();
 	}
-
-
 
 	public Pessoa(Integer id, String cpf, String nome, String email, TipoLogin tipoLogin) {
 		super();
@@ -40,10 +35,8 @@ public abstract class Pessoa implements Serializable {
 		this.nome = nome;
 		this.email = email;
 		this.tipoLogin = tipoLogin;
-		
+
 	}
-
-
 
 	public Integer getId() {
 		return id;
@@ -85,8 +78,6 @@ public abstract class Pessoa implements Serializable {
 		this.tipoLogin = tipoLogin;
 	}
 
-	
-
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -111,12 +102,5 @@ public abstract class Pessoa implements Serializable {
 			return false;
 		return true;
 	}
-	
-	
-	
-	
-	
-	
-	
 
 }

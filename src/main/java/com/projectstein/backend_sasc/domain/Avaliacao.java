@@ -17,22 +17,22 @@ import com.projectstein.backend_sasc.domain.enums.Funcao;
 @Entity
 public class Avaliacao {
 	private static final long serialVersionUID = 1L;
-	
+
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	private Date dataAvaliacao;
 	private Funcao tipoAvaliacao;
-	
+
 	@ManyToOne
 	@JoinColumn(name = "funcionario_id")
 	private Funcionario funcionario;
-	
+
 	@ManyToOne
 	@JoinColumn(name = "aluno_id")
 	private Aluno aluno;
-	
-	@OneToMany(mappedBy="id.avaliacao")
+
+	@OneToMany(mappedBy = "id.avaliacao")
 	private Set<Resposta> resposta = new HashSet<>();
 
 	public Avaliacao() {
@@ -112,9 +112,5 @@ public class Avaliacao {
 			return false;
 		return true;
 	}
-	
-	
-	
-	
 
 }

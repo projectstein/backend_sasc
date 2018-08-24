@@ -9,17 +9,15 @@ import javax.persistence.ManyToOne;
 @Embeddable
 public class RespostaPK implements Serializable {
 	private static final long serialVersionUID = 1L;
-	
-	
+
 	@ManyToOne
-	@JoinColumn(name="avaliacao_id")
+	@JoinColumn(name = "avaliacao_id")
 	private Avaliacao avaliacao;
-	
+
 	@ManyToOne
-	@JoinColumn(name="pergunta_id")
+	@JoinColumn(name = "pergunta_id")
 	private Pergunta pergunta;
 
-	
 	public Avaliacao getAvaliacao() {
 		return avaliacao;
 	}
@@ -66,10 +64,5 @@ public class RespostaPK implements Serializable {
 			return false;
 		return true;
 	}
-	
-	
-	
-	
-	
 
 }

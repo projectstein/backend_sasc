@@ -12,7 +12,7 @@ import com.projectstein.backend_sasc.repository.CriticaSugestaoElogioRepository;
 		@Autowired
 		private CriticaSugestaoElogioRepository repo;
 		
-		public CriticaSugestaoElogio buscar(Integer id) {
+		public CriticaSugestaoElogio find(Integer id) {
 			CriticaSugestaoElogio obj = repo.findOne(id);
 			return obj;
 		}

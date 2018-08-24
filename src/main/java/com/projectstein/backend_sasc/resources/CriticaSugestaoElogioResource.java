@@ -13,25 +13,15 @@ import com.projectstein.backend_sasc.services.CriticaSugestaoElogioService;
 @RestController
 @RequestMapping(value = "/cses")
 public class CriticaSugestaoElogioResource {
-	
 
-	
 	@Autowired
 	private CriticaSugestaoElogioService service;
-	
-		
-		@RequestMapping(value= "/{id}" , method= RequestMethod.GET)
-		public ResponseEntity<CriticaSugestaoElogio> find(@PathVariable Integer id) {
-			
-				CriticaSugestaoElogio obj = service.buscar(id); 
-			return ResponseEntity.ok().body(obj);
-	
-	
-	
+
+	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
+	public ResponseEntity<CriticaSugestaoElogio> find(@PathVariable Integer id) {
+		CriticaSugestaoElogio obj = service.find(id);
+		return ResponseEntity.ok().body(obj);
+
 	}
 
-	
-	
-	
-	
 }

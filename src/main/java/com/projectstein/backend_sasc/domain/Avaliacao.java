@@ -88,6 +88,14 @@ public class Avaliacao {
 		this.aluno = aluno;
 	}
 
+	public Set<Resposta> getResposta() {
+		return resposta;
+	}
+
+	public void setResposta(Set<Resposta> resposta) {
+		this.resposta = resposta;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;

@@ -7,19 +7,19 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.projectstein.backend_sasc.domain.Administrador;
-import com.projectstein.backend_sasc.services.AdministradorService;
+import com.projectstein.backend_sasc.domain.Pergunta;
+import com.projectstein.backend_sasc.services.PerguntaService;
 
 @RestController
-@RequestMapping(value = "/admin")
-public class AdministradorResource {
+@RequestMapping(value = "/perguntas")
+public class PerguntaResource {
 
 	@Autowired
-	private AdministradorService service;
+	private PerguntaService service;
 
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
-	public ResponseEntity<Administrador> find(@PathVariable Integer id) {
-		Administrador obj = service.find(id);
+	public ResponseEntity<Pergunta> find(@PathVariable Integer id) {
+		Pergunta obj = service.find(id);
 		return ResponseEntity.ok().body(obj);
 
 	}

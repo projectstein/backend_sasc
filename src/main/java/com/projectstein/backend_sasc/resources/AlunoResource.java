@@ -19,7 +19,6 @@ public class AlunoResource {
 
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
 	public ResponseEntity<Aluno> find(@PathVariable Integer id) {
-
 		Aluno obj = service.find(id);
 		return ResponseEntity.ok().body(obj);
 

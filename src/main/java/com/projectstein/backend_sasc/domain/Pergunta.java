@@ -12,6 +12,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.projectstein.backend_sasc.domain.enums.Funcao;
 
 @Entity
@@ -26,10 +27,12 @@ public class Pergunta {
 	private Date dataInicial;
 	private Date dataFinal;
 
+	@JsonIgnore
 	@ManyToOne
 	@JoinColumn(name = "administrador_id")
 	private Administrador administrador;
 
+	@JsonIgnore
 	@OneToMany(mappedBy = "id.pergunta")
 	private Set<Resposta> respostas = new HashSet<>();
 

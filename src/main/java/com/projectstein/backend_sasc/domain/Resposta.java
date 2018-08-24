@@ -5,6 +5,7 @@ import java.io.Serializable;
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.projectstein.backend_sasc.domain.enums.TipoResposta;
 
 @Entity

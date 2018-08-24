@@ -11,7 +11,7 @@ import com.projectstein.backend_sasc.domain.Administrador;
 import com.projectstein.backend_sasc.services.AdministradorService;
 
 @RestController
-@RequestMapping(value = "/admin")
+@RequestMapping(value = "/adm")
 public class AdministradorResource {
 
 	@Autowired

@@ -4,13 +4,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.projectstein.backend_sasc.domain.Aluno;
-import com.projectstein.backend_sasc.repository.PessoaRepository;
+import com.projectstein.backend_sasc.repository.AlunoRepository;
 
 @Service
 public class AlunoService {
 
 	@Autowired
-	private PessoaRepository repo;
+	private AlunoRepository repo;
 
 	public Aluno find(Integer id) {
 		Aluno obj = (Aluno) repo.findOne(id);

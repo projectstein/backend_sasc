@@ -4,13 +4,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.projectstein.backend_sasc.domain.Funcionario;
-import com.projectstein.backend_sasc.repository.PessoaRepository;
+import com.projectstein.backend_sasc.repository.FuncionarioRepository;
 
 @Service
 public class FuncionarioService {
 
 	@Autowired
-	private PessoaRepository repo;
+	private FuncionarioRepository repo;
 
 	public Funcionario find(Integer id) {
 		Funcionario obj = (Funcionario) repo.findOne(id);

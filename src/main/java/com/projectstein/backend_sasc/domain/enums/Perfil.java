@@ -1,6 +1,6 @@
 package com.projectstein.backend_sasc.domain.enums;
 
-public enum TipoLogin {
+public enum Perfil {
 	
 	ADMINISTRADOR(1, "Administrador"),
 	ALUNO(2, "Aluno"),
@@ -10,7 +10,7 @@ public enum TipoLogin {
 	
 	private int cod;
 	private String descricao;
-	private TipoLogin(int cod, String descricao) {
+	private Perfil(int cod, String descricao) {
 		this.cod = cod;
 		this.descricao = descricao;
 	}
@@ -21,12 +21,12 @@ public enum TipoLogin {
 		return descricao;
 	}
 	
-	public static TipoLogin toEnum(Integer id) {
+	public static Perfil toEnum(Integer id) {
 		if (id == null) {
 			return null;
 		}
 			
-		for (TipoLogin x : TipoLogin.values()) {
+		for (Perfil x : Perfil.values()) {
 				if (id.equals(x.getCod())) {
 					return x;
 				}

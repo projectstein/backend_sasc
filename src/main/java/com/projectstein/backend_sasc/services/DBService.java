@@ -16,12 +16,14 @@ import com.projectstein.backend_sasc.domain.Funcionario;
 import com.projectstein.backend_sasc.domain.Pergunta;
 import com.projectstein.backend_sasc.domain.Resposta;
 import com.projectstein.backend_sasc.domain.enums.Funcao;
-import com.projectstein.backend_sasc.domain.enums.TipoLogin;
+import com.projectstein.backend_sasc.domain.enums.Perfil;
 import com.projectstein.backend_sasc.domain.enums.TipoResposta;
+import com.projectstein.backend_sasc.repository.AdministradorRepository;
+import com.projectstein.backend_sasc.repository.AlunoRepository;
 import com.projectstein.backend_sasc.repository.AvaliacaoRepository;
 import com.projectstein.backend_sasc.repository.CriticaSugestaoElogioRepository;
+import com.projectstein.backend_sasc.repository.FuncionarioRepository;
 import com.projectstein.backend_sasc.repository.PerguntaRepository;
-import com.projectstein.backend_sasc.repository.PessoaRepository;
 import com.projectstein.backend_sasc.repository.RespostaRepository;
 
 @Service
@@ -30,7 +32,11 @@ public class DBService {
 	@Autowired
 	private CriticaSugestaoElogioRepository criticaSugestaoElogioRepository;
 	@Autowired
-	private PessoaRepository pessoaRepository;
+	private AdministradorRepository administradorRepository;
+	@Autowired
+	private AlunoRepository alunoRepository;
+	@Autowired
+	private FuncionarioRepository funcionarioRepository;
 	@Autowired
 	private PerguntaRepository perguntaRepository;
 	@Autowired
@@ -41,11 +47,11 @@ public class DBService {
 	public void instantiateTestDatabase() throws ParseException {
 		
 		Administrador adm = new Administrador(null, "11511644702", "Felipe Stein Rosa", "projectstein@gmail.com",
-				TipoLogin.ADMINISTRADOR, "SASC@gmail.com", "123456");
+				Perfil.ADMINISTRADOR, "SASC@gmail.com", "123456");
 		Funcionario fn1 = new Funcionario(null, "69831921097", "Vitoria gostosa", "delicia@gmail.com",
-				TipoLogin.FUNCIONARIO, Funcao.PROFESSOR, adm);
-		Aluno aln1 = new Aluno(null, "10333564090", "Arthur bosta", "Arthur.bosta@gmail.com", TipoLogin.ALUNO, adm);
-		Aluno aln2 = new Aluno(null, "55563625052", "Robson Macedo", "Robson.Macedo@gmail.com", TipoLogin.ALUNO, fn1);
+				Perfil.FUNCIONARIO, Funcao.PROFESSOR, adm);
+		Aluno aln1 = new Aluno(null, "10333564090", "Arthur bosta", "Arthur.bosta@gmail.com", Perfil.ALUNO, adm);
+		Aluno aln2 = new Aluno(null, "55563625052", "Robson Macedo", "Robson.Macedo@gmail.com", Perfil.ALUNO, fn1);
 
 		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 
@@ -66,7 +72,9 @@ public class DBService {
 		av1.getResposta().addAll(Arrays.asList(r1));
 		
 		
-		pessoaRepository.save(Arrays.asList(adm, fn1, aln1, aln2));
+		administradorRepository.save(Arrays.asList(adm));
+		funcionarioRepository.save(Arrays.asList(fn1));
+		alunoRepository.save(Arrays.asList(aln1,aln2));
 		criticaSugestaoElogioRepository.save(Arrays.asList(cse1, cse2));
 		perguntaRepository.save(Arrays.asList(p1));
 		avaliacaoRepository.save(Arrays.asList(av1));

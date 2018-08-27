@@ -10,106 +10,86 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
-
 @Entity
 public class CriticaSugestaoElogio implements Serializable {
-		private static final long serialVersionUID = 1L;
-		
-		@Id
-		@GeneratedValue(strategy=GenerationType.IDENTITY)
-		private Integer id;
-		private String comentario;
-		private Date dataComentario;
-		
-		
-		@ManyToOne
-		@JoinColumn(name = "aluno_id")
-		private Aluno aluno;
-		
-		
-		public CriticaSugestaoElogio() {
-			
-		}
+	private static final long serialVersionUID = 1L;
 
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Integer id;
+	private String comentario;
+	private Date dataComentario;
 
-		public CriticaSugestaoElogio(Integer id, String comentario, Date dataComentario, Aluno aluno) {
-			this.id = id;
-			this.comentario = comentario;
-			this.dataComentario = dataComentario;
-			this.aluno= aluno;
-		}
+	@ManyToOne
+	@JoinColumn(name = "aluno_id")
+	private Aluno aluno;
 
+	public CriticaSugestaoElogio() {
 
-		public Integer getId() {
-			return id;
-		}
+	}
 
+	public CriticaSugestaoElogio(Integer id, String comentario, Date dataComentario, Aluno aluno) {
+		this.id = id;
+		this.comentario = comentario;
+		this.dataComentario = dataComentario;
+		this.aluno = aluno;
+	}
 
-		public void setId(Integer id) {
-			this.id = id;
-		}
+	public Integer getId() {
+		return id;
+	}
 
+	public void setId(Integer id) {
+		this.id = id;
+	}
 
-		public String getComentario() {
-			return comentario;
-		}
+	public String getComentario() {
+		return comentario;
+	}
 
+	public void setComentario(String comentario) {
+		this.comentario = comentario;
+	}
 
-		public void setComentario(String comentario) {
-			this.comentario = comentario;
-		}
+	public Date getDataComentario() {
+		return dataComentario;
+	}
 
+	public void setDataComentario(Date dataComentario) {
+		this.dataComentario = dataComentario;
+	}
 
-		public Date getDataComentario() {
-			return dataComentario;
-		}
+	public Aluno getAluno() {
+		return aluno;
+	}
 
+	public void setAluno(Aluno aluno) {
+		this.aluno = aluno;
+	}
 
-		public void setDataComentario(Date dataComentario) {
-			this.dataComentario = dataComentario;
-		}
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((id == null) ? 0 : id.hashCode());
+		return result;
+	}
 
-
-		public Aluno getAluno() {
-			return aluno;
-		}
-
-
-		public void setAluno(Aluno aluno) {
-			this.aluno = aluno;
-		}
-
-
-		@Override
-		public int hashCode() {
-			final int prime = 31;
-			int result = 1;
-			result = prime * result + ((id == null) ? 0 : id.hashCode());
-			return result;
-		}
-		
-		
-
-
-		@Override
-		public boolean equals(Object obj) {
-			if (this == obj)
-				return true;
-			if (obj == null)
-				return false;
-			if (getClass() != obj.getClass())
-				return false;
-			CriticaSugestaoElogio other = (CriticaSugestaoElogio) obj;
-			if (id == null) {
-				if (other.id != null)
-					return false;
-			} else if (!id.equals(other.id))
-				return false;
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
 			return true;
-		}
-		
-		
-		
-		
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		CriticaSugestaoElogio other = (CriticaSugestaoElogio) obj;
+		if (id == null) {
+			if (other.id != null)
+				return false;
+		} else if (!id.equals(other.id))
+			return false;
+		return true;
+	}
 
 }

@@ -56,10 +56,12 @@ public class DBService {
 		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 
 		CriticaSugestaoElogio cse1 = new CriticaSugestaoElogio(null, "teste", sdf.parse("17/07/2018"), aln1);
-		
+		//cse1.setMes();
+		//cse1.setAno();
 
 		CriticaSugestaoElogio cse2 = new CriticaSugestaoElogio(null, "teste2", sdf.parse("19/08/2018"), aln2);
-		
+		//cse2.setMes();
+		//cse2.setAno();
 		
 		Pergunta p1 = new Pergunta(null, "Como você avalia o conhecimento do professor?",
 									Funcao.PROFESSOR, sdf.parse("17/07/2018"), adm);

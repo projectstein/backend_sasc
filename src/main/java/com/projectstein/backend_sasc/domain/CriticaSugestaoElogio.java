@@ -1,6 +1,7 @@
 package com.projectstein.backend_sasc.domain;
 
 import java.io.Serializable;
+import java.util.Calendar;
 import java.util.Date;
 
 import javax.persistence.Entity;
@@ -19,6 +20,8 @@ public class CriticaSugestaoElogio implements Serializable {
 	private Integer id;
 	private String comentario;
 	private Date dataComentario;
+	private Integer mes;
+	private Integer ano;
 
 	@ManyToOne
 	@JoinColumn(name = "aluno_id")
@@ -33,6 +36,9 @@ public class CriticaSugestaoElogio implements Serializable {
 		this.comentario = comentario;
 		this.dataComentario = dataComentario;
 		this.aluno = aluno;
+		setMes();
+		setAno();
+		
 	}
 
 	public Integer getId() {
@@ -65,6 +71,27 @@ public class CriticaSugestaoElogio implements Serializable {
 
 	public void setAluno(Aluno aluno) {
 		this.aluno = aluno;
+	}
+
+	public Integer getMes() {
+		Calendar calendario = Calendar.getInstance();
+		calendario.setTime(this.dataComentario);
+		return calendario.get(Calendar.MONTH)+1;
+		
+	}
+
+	public Integer getAno() {
+		Calendar calendario = Calendar.getInstance();
+		calendario.setTime(this.dataComentario);
+		return calendario.get(Calendar.YEAR);
+	}
+
+	public void setMes() {
+		this.mes = getMes();
+	}
+
+	public void setAno() {
+		this.ano = getAno();
 	}
 
 	@Override

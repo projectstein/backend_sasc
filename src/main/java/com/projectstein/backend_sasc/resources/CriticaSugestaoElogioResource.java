@@ -41,7 +41,7 @@ public class CriticaSugestaoElogioResource {
 	public ResponseEntity<Page<CriticaSugestaoElogio>> findPage(
 			@RequestParam(value="page", defaultValue="0") Integer page, 
 			@RequestParam(value="linesPerPage", defaultValue="24") Integer linesPerPage, 
-			@RequestParam(value="orderBy", defaultValue="comentario") String orderBy, 
+			@RequestParam(value="orderBy", defaultValue="dataComentario") String orderBy, 
 			@RequestParam(value="direction", defaultValue="ASC") String direction,
 			@RequestParam(value="mes",defaultValue="8") Integer mes,
 			@RequestParam(value="ano",defaultValue="2018")Integer ano) {
@@ -50,5 +50,9 @@ public class CriticaSugestaoElogioResource {
 	}
 
 	
-	
+	@RequestMapping(value="/{id}", method=RequestMethod.DELETE)
+	public ResponseEntity<Void> delete(@PathVariable Integer id) {
+		service.delete(id);
+		return ResponseEntity.noContent().build();
+	}
 }

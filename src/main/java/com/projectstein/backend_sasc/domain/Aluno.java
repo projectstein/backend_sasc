@@ -7,6 +7,7 @@ import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.CollectionTable;
+import javax.persistence.Column;
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -17,20 +18,22 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.projectstein.backend_sasc.domain.enums.Perfil;
 
 @Entity
 public class Aluno {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
+
+	@Column(unique = true)
 	private String cpf;
 	private String nome;
+
+	@Column(unique = true)
 	private String email;
-	private Perfil perfil;
-	
+
 	@ElementCollection
 	@CollectionTable(name = "TELEFONE")
 	private Set<String> telefones = new HashSet<>();
@@ -46,7 +49,7 @@ public class Aluno {
 	private Administrador administrador;
 
 	@JsonIgnore
-	@OneToMany(mappedBy = "aluno",cascade=CascadeType.ALL)
+	@OneToMany(mappedBy = "aluno", cascade = CascadeType.ALL)
 	private List<CriticaSugestaoElogio> criticaSugestaoElogio = new ArrayList<>();
 
 	@JsonIgnore
@@ -56,25 +59,23 @@ public class Aluno {
 	public Aluno() {
 	}
 
-	public Aluno(Integer id, String cpf, String nome, String email, Perfil perfil, Administrador administrador) {
-		this.id= id;
-		this.cpf=cpf;
-		this.nome= nome;;
-		this.email= email;
-		this.administrador= administrador;
-		this.perfil= perfil;
-	
-	
+	public Aluno(Integer id, String cpf, String nome, String email, Administrador administrador) {
+		this.id = id;
+		this.cpf = cpf;
+		this.nome = nome;
+		this.email = email;
+		this.administrador = administrador;
+
 	}
 
-	public Aluno(Integer id, String cpf, String nome, String email, Perfil perfil, Funcionario funcionario) {
-		this.id= id;
-		this.cpf=cpf;
-		this.nome= nome;;
-		this.email= email;
-		this.funcionario= funcionario;
-		this.perfil=perfil;
-	
+	public Aluno(Integer id, String cpf, String nome, String email, Funcionario funcionario) {
+		this.id = id;
+		this.cpf = cpf;
+		this.nome = nome;
+		;
+		this.email = email;
+		this.funcionario = funcionario;
+
 	}
 
 	public Integer getId() {
@@ -107,14 +108,6 @@ public class Aluno {
 
 	public void setEmail(String email) {
 		this.email = email;
-	}
-
-	public Perfil getPerfil() {
-		return perfil;
-	}
-
-	public void setPerfil(Perfil perfil) {
-		this.perfil = perfil;
 	}
 
 	public Set<String> getTelefones() {

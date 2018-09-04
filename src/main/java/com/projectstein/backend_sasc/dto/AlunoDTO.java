@@ -1,14 +1,19 @@
 package com.projectstein.backend_sasc.dto;
 
 import java.io.Serializable;
+import java.util.List;
 
 import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.NotEmpty;
 
-public class AlunoNewDTO implements Serializable {
+import com.projectstein.backend_sasc.domain.Aluno;
+
+public class AlunoDTO implements Serializable {
 	private static final long serialVersionUID = 1L;
 
+	private Integer id;
+	
 	@NotEmpty(message="Preenchimento obrigatório")
 	@Length(min=5, max=120, message="O tamanho deve ser entre 5 e 120 caracteres")
 	private String nome;
@@ -17,13 +22,26 @@ public class AlunoNewDTO implements Serializable {
 	@Email(message="Email inválido")
 	private String email;
 	
-	@NotEmpty(message="Preenchimento obrigatório")
 	private String cpf;
-	private String telefone1;
-	private String telefone2;
+	private List<String> telefones;
 
-	public AlunoNewDTO() {
-		
+	public AlunoDTO() {
+	}
+
+	public AlunoDTO(Aluno obj) {
+		id = obj.getId();
+		nome = obj.getNome();
+		email = obj.getEmail();
+		cpf= obj.getCpf();
+		setTelefones((List)obj.getTelefones());
+	}
+
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
 	}
 
 	public String getNome() {
@@ -46,24 +64,12 @@ public class AlunoNewDTO implements Serializable {
 		return cpf;
 	}
 
-	public void setCpf(String cpf) {
-		this.cpf = cpf;
+	public List<String> getTelefones() {
+		return telefones;
 	}
 
-	public String getTelefone1() {
-		return telefone1;
-	}
-
-	public void setTelefone1(String telefone1) {
-		this.telefone1 = telefone1;
-	}
-
-	public String getTelefone2() {
-		return telefone2;
-	}
-
-	public void setTelefone2(String telefone2) {
-		this.telefone2 = telefone2;
+	public void setTelefones(List<String> telefones) {
+		this.telefones = telefones;
 	}
 
 	
